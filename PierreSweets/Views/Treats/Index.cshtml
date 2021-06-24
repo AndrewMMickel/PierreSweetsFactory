@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@using PierreSweets.Models;
+@using System.Security.Claims
+@model IEnumerable<PierreSweets.Models.Treat>
+
+<h1>Today's Treats</h1>
+
+@if (Model.Any())
+{
+  <ul>
+    @foreach (Treat treat in Model)
+    {
+      <li>@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId })</li>
+    }
+  </ul>
+} 
+else
+{
+  <h3>We haven't made any treats for today, yet!</h3>
+}
+
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
