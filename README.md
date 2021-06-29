@@ -1,11 +1,11 @@
 <br>
 <h1 align = "center">
-<b> Dr. Sillystringz's Factory </b>
+<b> PierreSweets </b>
 </h1>
 
 <p align = "center">
-This application allows the user to keep track of Engineers and Machines in Dr. Sillystringz's Factory </p>
-<p align = "center"> Created May 20th, 2021 </p>
+This application allows the user to keep track of PierreSweets bakery using a login feature</p>
+<p align = "center"> Created May 6/20/21 </p>
 
 <p align = "center">
  By Andrew Mickel
@@ -15,13 +15,9 @@ This application allows the user to keep track of Engineers and Machines in Dr. 
 
 ## 📖  Description
 
-This application allows the user to keep track of Engineers and Machines in Dr. Sillystringz's Factory. The user can add Machines to an Engineer who is licensed to do so and add Engineers to a Machine. 
+Pierre's Business is booming and he needs the same pizazz that we applied to his bakery to help sell his new sweet and savory treats! He wants to be able to have a list of treats, as well as a list of flavors and to be able to associate them so that he can have multiple flavors for each treat and vice-versa. He also wants his employees to be able to log in so that they can add, update, delete, and associate treats and flavors, while customers will only be able to view what is available for the day.
 
-This is the Independent Project for Epicodus week 11 as part of the "Many-to-Many Relationships" coursework. 
-
-<p align = "center">
-  <img src= "https://media.giphy.com/media/nTqrT6ZGgX1VRJvzuq/giphy.gif">
-</p>
+This project uses C#, MySQL, Entity Framework, Microsoft Identity, and MVC to create a web interface that will allow the greatest video rental franchise of all time to maintain a daily menu of treats, categorize them by flavor, and allow authorized users to employ full CRUD functionality. The interface will achieve this by utilizing a MySQL database along with Identity authorization.
 
 --------------------
 
@@ -41,30 +37,22 @@ This project uses the following technologies:
 
 ## Specifications
 
-![SQL Design](./ReadmeAssets/img/DatabaseDesign.png "SQL Database Design")
-
-
-<details>
-<summary>User Stories</summary>
-
-| Story# | User Story | Complete |
-| :------------- | :------------- | :------------- |
-| 01 | As the factory manager, I need to be able to see a list of all engineers, and I need to be able to see a list of all machines. | true |
-| 02 | As the factory manager, I need to be able to select a engineer, see their details, and see a list of all machines that engineer is licensed to repair. I also need to be able to select a machine, see its details, and see a list of all engineers licensed to repair it. | true |
-| 03 | As the factory manager, I need to add new engineers to our system when they are hired. I also need to add new machines to our system when they are installed. | true |
-| 04 | As the factory manager, I should be able to add new machines even if no engineers are employed. I should also be able to add new engineers even if no machines are installed. | true |
-| 05 | As the factory manager, I need to be able to add or remove machines that a specific engineer is licensed to repair. I also need to be able to modify this relationship from the other side, and add or remove engineers from a specific machine. | true |
-| 06 | I should be able to navigate to a splash page that lists all engineers and machines. Users should be able to click on an individual engineer or machine to see all the engineers/machines that belong to it. | false |
-
-</details>
+| Behavior | Input | Output |  Completed(Y/N?)  |
+| -------- | ----- | ------ | -------- |
+| Create an object called Treat with an auto-implementing property for its Name |  |  | Y |
+| Create an object called Flavor with an auto-implementing property for its Name | | | Y |
+| Allow authorized users to create a new Treat object through a user interface |  |  | Y |
+| Allow authorized users to create a new Flavor object through a user interface |  |  | Y |
+| Create a database with tables for Treat and Flavor objects using Entity Framework and code first development and database migrations | | | Y |
+| Maintain a many-to-many relationship between Treat and Flavor objects via a joing table | | | Y |
+| Allow authorized users to create a new join relationship between an Treat and a Flavor from each object's details page | | | Y |
+| Allow unauthenticated users to view a list of Treats and Flavors, as well as their details page | | | Y |
+| Restrict unauthenticated users from Creating, Editing, Deleting, or Associating Treat or Flavor objects | | | Y |
 
 -------------------
 
 ## 🐛 Known Bugs
 
-| Date | Error | Handled | Solution |
-| :------------- | :------------- | :------------- | :------------- |
-| 01.08.2021 | unable to display engineers `"LastName", "FirstName"` in drop down list when creating a new Machine | true | added get perameters to `FullName` in Engineer Class |
 
 -------------------
 
@@ -83,7 +71,7 @@ This project uses the following technologies:
 
 #### To Download:
 
-Go to my GitHub repository here, [https://guthub.com/AndrewMMickel/Factory](https://guthub.com/AndrewMMickel/Factory), and click on the green 'Code' button to clone the repository, Open with GitHub Desktop OR Download the ZIP file
+Go to my GitHub repository here, [https://github.com/AndrewMMickel/PierreSweetsFactory](https://github.com/AndrewMMickel/PierreSweetsFactory), and click on the green 'Code' button to clone the repository, Open with GitHub Desktop OR Download the ZIP file
 
 #### To clone (my prefered method):
 
@@ -101,7 +89,7 @@ Go to my GitHub repository here, [https://guthub.com/AndrewMMickel/Factory](http
 ```
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;database=andrew_mickel_factory;uid=root;pwd=YOUR-PASSWORD-HERE;"
+    "DefaultConnection": "Server=localhost;Port=3306;database=andrew_mickel;uid=root;pwd=YOUR-PASSWORD-HERE;"
     }
 }
 ```
@@ -110,59 +98,14 @@ Go to my GitHub repository here, [https://guthub.com/AndrewMMickel/Factory](http
 
 #### Import Database using Entity Framework Core (option 1 continued):
 
- - In the command line run ` cd Desktop/Factory.Solution/Factory` to navigate to the "Factory" folder. 
+ - In the command line run ` cd Desktop/PierreSweets.Solution/PierreSweets` to navigate to the "PierreSweets" folder. 
  - Next, run `dotnet ef database update` to generate the database. You can confirm the database was created by checking MySQL workbench.
 
 *to make changed to the database you can run `dotnet ef migrations add <MigrationName>`
 
-#### Import Database using MySQL Workbench (option 2):
-
-- Open MySQL workbench and go to the navigation bar and select `Server > Data Import`. 
-- Next, select the option `Import from Self-Contained File` and confirm you have the file `kaila_spraguemcrae_factory.sql` set to be imported (this files exists in the root directory of this project). 
-- Then, set the `Defaul Target Schema` or create a new schema and select all the the Schema Objects you want to be imported. 
-- Check that the option `Dump Structure and Data` is selected. Once you confirm you have all of the correct settings click `Start Import`.
-
-#### Import Database using SQL Schema (option 3):
-
-- Open your MySQL management tool and paste the following Create Statement to generate the database:
-
-```
-CREATE DATABASE `andrew_mickel_factory` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
-
-CREATE TABLE `__EFMigrationsHistory` (
-  `MigrationId` varchar(95) NOT NULL,
-  `ProductVersion` varchar(32) NOT NULL,
-  PRIMARY KEY (`MigrationId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `EngineerMachine` (
-  `EngineerMachineId` int(11) NOT NULL AUTO_INCREMENT,
-  `EngineerId` int(11) NOT NULL,
-  `MachineId` int(11) NOT NULL,
-  PRIMARY KEY (`EngineerMachineId`),
-  KEY `IX_EngineerMachine_EngineerId` (`EngineerId`),
-  KEY `IX_EngineerMachine_MachineId` (`MachineId`),
-  CONSTRAINT `FK_EngineerMachine_Engineers_EngineerId` FOREIGN KEY (`EngineerId`) REFERENCES `engineers` (`EngineerId`) ON DELETE CASCADE,
-  CONSTRAINT `FK_EngineerMachine_Machines_MachineId` FOREIGN KEY (`MachineId`) REFERENCES `machines` (`MachineId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `Engineers` (
-  `EngineerId` int(11) NOT NULL AUTO_INCREMENT,
-  `FirstName` longtext,
-  `LastName` longtext,
-  PRIMARY KEY (`EngineerId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `Machines` (
-  `MachineId` int(11) NOT NULL AUTO_INCREMENT,
-  `MachineName` longtext,
-  PRIMARY KEY (`MachineId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-```
-
 #### Running/viewing application:
 
-1. Once you have opened the code in your preferred text editor you will need to navigate to the 'Factory.Solution/Factory' folder (`cd Factory`) in the command line and run `dotnet run` or `dotnet watch run`.
+1. Once you have opened the code in your preferred text editor you will need to navigate to the 'PierreSweets.Solution/PierreSweets' folder (`cd PierreSweets`) in the command line and run `dotnet run` or `dotnet watch run`.
 2. At this point you should be able to click on the link to the local server's url path to view the compiled project. 
 
 --------------------------
