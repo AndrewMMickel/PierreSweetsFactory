@@ -31,7 +31,7 @@ namespace PierreSweets.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public ActionResult Create(Flavor flavor)
         {
             _db.Flavors.Add(flavor);
@@ -48,6 +48,7 @@ namespace PierreSweets.Controllers
             return View(thisFlavor);
         }
 
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
@@ -73,7 +74,7 @@ namespace PierreSweets.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public ActionResult Edit(Flavor flavor)
         {
             _db.Entry(flavor).State = EntityState.Modified;
@@ -81,6 +82,7 @@ namespace PierreSweets.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
